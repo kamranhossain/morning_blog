@@ -37,3 +37,58 @@ class Query(ObjectType):
  
     def resolve_blogs(self, info, **kwargs):
         return Blog.objects.all()
+
+
+class CreateBlog(graphene.Mutation):
+    class Arguments:
+        input = BlogInputType(required=True)
+ 
+    ok = graphene.Boolean()
+    blog = graphene.Field(BlogType)
+ 
+    @staticmethod
+    def mutate(root, info, input):
+        blog = Blog()
+        for key, val in input.items():
+            setattr(blog, key, val)
+        blog.save()
+        return CreateBlog(ok=True, blog=blog)
+ 
+ 
+class UpdateBlog(graphene.Mutation):
+    class Arguments:
+        input = BlogInputType(required=True)
+ 
+    ok = graphene.Boolean()
+    blog = graphene.Field(BlogType)
+ 
+    @staticmethod
+    def mutate(root, info, input):
+        id = input.get("id")
+        blog = Blog.objects.get(id=id)
+        for key, val in input.items():
+            setattr(blog, key, val)
+        blog.save()
+        return UpdateBlog(ok=True, blog=blog)
+ 
+ 
+class DeleteBlog(graphene.Mutation):
+    class Arguments:
+        input = DeleteBlogInputType(required=True)
+ 
+    ok = graphene.Boolean()
+ 
+    @staticmethod
+    def mutate(root, info, input):
+        id = input.get("id")
+        blog = Blog.objects.get(id=id)
+        blog.delete()
+        return DeleteBlog(ok=True)
+ 
+ 
+class Mutation(graphene.ObjectType):
+    create_blog = CreateBlog.Field()
+    update_blog = UpdateBlog.Field()
+    delete_blog = DeleteBlog.Field()
+ 
+schema = graphene.Schema(query=Query, mutation=Mutation)
