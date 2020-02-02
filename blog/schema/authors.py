@@ -21,3 +21,14 @@ class AuthorInputType(graphene.InputObjectType, AuthorFields):
  
 class DeleteAuthorInputType(graphene.InputObjectType):
      id = graphene.ID(required=True)
+
+class Query(ObjectType):
+    author = graphene.Field(AuthorType, id=graphene.ID(required=True))
+    authors = graphene.List(AuthorType)
+ 
+    def resolve_author(self, info, **kwargs):
+        id = kwargs.get("id")
+        return Author.objects.get(id=id)
+         
+    def resolve_authors(self, info, **kwargs):
+        return Author.objects.all()
