@@ -1,4 +1,7 @@
-# Build GraphQL API with Django
+# Build GraphQL API with Django and Graphene-Django
+
+Walk Trough of the blog post: How to build GraphQL API with Django – 7 Steps by Ijharul Islam
+
 Serving Graphql APIs with Django application
 
 
