@@ -60,6 +60,9 @@ coverage.xml
 *.mo
 *.pot
 
+# virtual env
+venv
+.env
 
 ### VisualStudioCode ###
 .vscode/*
