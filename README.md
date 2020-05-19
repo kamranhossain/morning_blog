@@ -2,6 +2,8 @@
 
 Walk Trough of the blog post: How to build GraphQL API with Django – 7 Steps by Ijharul Islam
 
+--- Application Structure modified by @kamranhossain(kamran.hossain227@gmail.com)
+
 Serving Graphql APIs with Django application
 
 
