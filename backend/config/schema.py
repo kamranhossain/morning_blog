@@ -1,7 +1,9 @@
 import graphene
+import graphql_jwt
 
 from apps.blog.schema.authors import schema as author_schema
 from apps.blog.schema.blogs import schema as blog_schema
+from apps.users.schema.users import schema as user_schema
 
 
 class Query(author_schema.Query, blog_schema.Query):
