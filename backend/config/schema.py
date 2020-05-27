@@ -10,8 +10,7 @@ class Query(author_schema.Query, blog_schema.Query, user_schema.Query, graphene.
     pass
 
 
-class Mutation(author_schema.Mutation, blog_schema.Mutation):
-    pass
+class Mutation(author_schema.Mutation, blog_schema.Mutation, user_schema.Mutation, graphene.ObjectType):
 
 
 schema = graphene.Schema(query=Query, mutation=Mutation)
