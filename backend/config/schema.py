@@ -6,7 +6,7 @@ from apps.blog.schema.blogs import schema as blog_schema
 from apps.users.schema.users import schema as user_schema
 
 
-class Query(author_schema.Query, blog_schema.Query):
+class Query(author_schema.Query, blog_schema.Query, user_schema.Query, graphene.ObjectType):
     pass
 
 
