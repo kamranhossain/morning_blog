@@ -41,7 +41,7 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = ["graphene_django"]
 
-LOCAL_APPS = ["apps.blog"]
+LOCAL_APPS = ["apps.blog", "apps.users"]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
